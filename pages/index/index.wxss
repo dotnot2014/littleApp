@@ -1,0 +1,18 @@
+/**index.wxss**/
+view{
+  display: inline-block;
+}
+#task_input{
+  background-color: #ededed;
+  margin: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 92%;
+}
+#add_btn{
+  margin:5px;
+}
+#task_list{
+  margin: 30px;
+}
