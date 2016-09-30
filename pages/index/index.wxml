@@ -2,11 +2,13 @@
 <view>
  <form id="" catchsubmit="addTask">
     <input id="task_input" placeholder="请输入你的任务..." name="title" focus="{{focus}}"/>
-    <button id="add_btn" formType="submit">添加</button>
+    <button type="primary" id="add_btn" formType="submit">添加</button>
   </form>
 </view>
 <checkbox-group bindchange="checkboxChange">
 <view id="task_list" wx:for="{{tasks}}" wx:for-item="item">
-  <checkbox name="task_check" value="{{index}}" checked="{{item.finished}}"/> {{item.task}}
+  <checkbox name="task_check" value="{{index}}" checked="{{item.finished}}"/> 
+  <text class="{{style}}">  {{item.task}}</text>
 </view>
 </checkbox-group>
+<view class="notation">共有: {{tasksCount}} 条任务</view>

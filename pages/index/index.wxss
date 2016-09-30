@@ -16,3 +16,15 @@ view{
 #task_list{
   margin: 30px;
 }
+.finished_task{
+  color: red;
+}
+.notfinished_task{
+  color: green;
+}
+.notation{
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #ededed;
+    padding-top: 20px
+}

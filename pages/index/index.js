@@ -4,31 +4,21 @@
 var app = getApp()
 Page({
   data: {
-    tasks: [
-        {
-            task:"这是第一条任务",
-            finished:true
-        },
-        {
-            task:"这是第二条任务",
-            finished:true
-        },      
-        {
-            task:"这是第三条任务",
-            finished:true
-        }
-    ],
-    focus: false
+    tasks: [],
+    tasksCount:0,
+    focus: false,
+    style: 'notfinished_task'
   },
   //添加一条新任务
   addTask: function(e) {
-    var myTasks = this.data.tasks;
+    var _tasks = this.data.tasks;
     var newtask = {}
     newtask.task = e.detail.value.title
     newtask.finished = false
-    var tasksCount = myTasks.push(newtask)
+    var _tasksCount = _tasks.push(newtask)
     this.setData({
-      tasks: myTasks,
+      tasks: _tasks,
+      tasksCount:_tasksCount,
       focus: true
     })
   },
@@ -37,6 +27,20 @@ Page({
   },
   onLoad: function () {
     // 从本地数据存储读取数据
+    var that = this
+    wx.request({
+      url: 'http://localhost:63342/vueglance/tasks.json',
+      data: {},
+      header: {
+          'Content-Type': 'application/json'
+      },
+      success: function(res) {
+        that.setData({
+            tasks: res.data.tasks,
+            tasksCount:res.data.tasks.length
+          })
+      }
+    })
   },
   jump_url: function(){
     wx.navigateTo({
