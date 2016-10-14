@@ -5,9 +5,7 @@ var app = getApp()
 Page({
   data: {
     tasks: [],
-    tasksCount:0,
-    focus: false,
-    style: 'notfinished_task'
+    tasksCount:0
   },
   //添加一条新任务
   addTask: function(e) {
@@ -19,14 +17,20 @@ Page({
     this.setData({
       tasks: _tasks,
       tasksCount:_tasksCount,
-      focus: true
+      value:''
     })
   },
-  checkboxChange: function(e){
-    console.log(e.detail.value)
+  // 更新任务状态
+  checktap: function(e){
+    var _id = e.target.id
+    var _tasks = this.data.tasks
+    _tasks[_id].finished = !_tasks[_id].finished;
+    this.setData({
+      tasks: _tasks
+    })
   },
+  // 数据初始化,从服务端读取json数据
   onLoad: function () {
-    // 从本地数据存储读取数据
     var that = this
     wx.request({
       url: 'http://localhost:63342/vueglance/tasks.json',
@@ -42,6 +46,7 @@ Page({
       }
     })
   },
+  // 页面跳转
   jump_url: function(){
     wx.navigateTo({
       url: '../logs/logs'

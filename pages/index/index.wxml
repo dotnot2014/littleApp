@@ -1,14 +1,14 @@
 <!--index.wxml-->
 <view>
- <form id="" catchsubmit="addTask">
-    <input id="task_input" placeholder="请输入你的任务..." name="title" focus="{{focus}}"/>
+ <form catchsubmit="addTask">
+    <input class="task_input" placeholder="请输入你的任务..." name="title" focus="{{focus}}" value="{{value}}"/>
     <button type="primary" id="add_btn" formType="submit">添加</button>
   </form>
 </view>
-<checkbox-group bindchange="checkboxChange">
+<checkbox-group >
 <view id="task_list" wx:for="{{tasks}}" wx:for-item="item">
-  <checkbox name="task_check" value="{{index}}" checked="{{item.finished}}"/> 
-  <text class="{{style}}">  {{item.task}}</text>
+  <checkbox id="{{index}}" checked="{{item.finished}}" bindtap="checktap"/> 
+  <text class="{{item.finished ? 'finished_task' : 'notfinished_task'}}">  {{item.task}}</text>
 </view>
 </checkbox-group>
 <view class="notation">共有: {{tasksCount}} 条任务</view>

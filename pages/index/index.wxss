@@ -2,7 +2,7 @@
 view{
   display: inline-block;
 }
-#task_input{
+.task_input{
   background-color: #ededed;
   margin: 5px;
   font-size: 14px;
@@ -17,7 +17,8 @@ view{
   margin: 30px;
 }
 .finished_task{
-  color: red;
+  color:#ddd;
+  text-decoration:line-through;
 }
 .notfinished_task{
   color: green;
