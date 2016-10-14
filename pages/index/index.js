@@ -5,7 +5,9 @@ var app = getApp()
 Page({
   data: {
     tasks: [],
-    tasksCount:0
+    tasksCount:0,
+    inputvalue:'',
+    focusta:false
   },
   //添加一条新任务
   addTask: function(e) {
@@ -17,7 +19,8 @@ Page({
     this.setData({
       tasks: _tasks,
       tasksCount:_tasksCount,
-      value:''
+      inputvalue:' ',
+      focusta: true
     })
   },
   // 更新任务状态
@@ -26,7 +29,8 @@ Page({
     var _tasks = this.data.tasks
     _tasks[_id].finished = !_tasks[_id].finished;
     this.setData({
-      tasks: _tasks
+      tasks: _tasks,
+      inputvalue:''
     })
   },
   // 数据初始化,从服务端读取json数据

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view>
  <form catchsubmit="addTask">
-    <input class="task_input" placeholder="请输入你的任务..." name="title" focus="{{focus}}" value="{{value}}"/>
+    <input class="task_input" placeholder="请输入你的任务..." name="title" focus="{{focusta}}" value="{{inputvalue}}"/>
     <button type="primary" id="add_btn" formType="submit">添加</button>
   </form>
 </view>
